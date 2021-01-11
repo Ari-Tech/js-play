@@ -22,3 +22,16 @@ console.log(
         multi2
     )(5)) // --> 62
 
+const person={
+    phones:{
+        home:'+232323',
+        work:{
+            skype:'a@b.c',
+            call:'+2323'
+        }
+    }
+}
+
+//chaning in JS
+console.log("Work phone number ", person.phones.work?.call);
+console.log("Work phone number ", person?.phones.work.call);
