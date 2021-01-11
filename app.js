@@ -22,16 +22,34 @@ console.log(
         multi2
     )(5)) // --> 62
 
-const person={
-    phones:{
-        home:'+232323',
-        work:{
-            skype:'a@b.c',
-            call:'+2323'
-        }
+
+/* 
+Suppose I get a response from server and want to details of a person 
+*/
+let response= {};
+// Now the response can also be empty like above
+
+// doing directly will break the code since the response is empty
+console.log(response.person.phones.work.skype); // Cannot read property 'phones' of undefined
+
+// so a safe code is doing this
+if(response.person && response.person.phones && response.person.phones.work){
+    console.log(response.person.phones.work.skype);
+}
+// to avoid the conditions and make the code "safe" and simple we can also use optional chaining here: 
+
+console.log(response?.person?.phones?.work?.skype); // undefined but doesn't break the code
+//lets put correct response
+ response={
+    person:{
+        phones:{
+            home:'+232323',
+            work:{
+                skype:'a@b.c',
+                call:'+2323'
+            }
+        },
+        name:'Arindam'
     }
 }
-
-//chaning in JS
-console.log("Work phone number ", person.phones.work?.call);
-console.log("Work phone number ", person?.phones.work.call);
+console.log(response?.person?.phones?.work?.skype); // a@b.c 
