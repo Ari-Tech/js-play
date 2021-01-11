@@ -30,7 +30,11 @@ let response= {};
 // Now the response can also be empty like above
 
 // doing directly will break the code since the response is empty
-console.log(response.person.phones.work.skype); // Cannot read property 'phones' of undefined
+try{
+    console.log(response.person.phones.work.skype); // Cannot read property 'phones' of undefined
+}catch(e){
+    console.log('exception ',e) //exception  TypeError: Cannot read property 'phones' of undefined
+}
 
 // so a safe code is doing this
 if(response.person && response.person.phones && response.person.phones.work){
